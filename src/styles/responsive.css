@@ -1,0 +1,662 @@
+.posts {
+  display: grid;
+  grid-row-gap: 16px;
+}
+
+:root {
+  --primary: #e75824;
+  --bg: #010101;
+}
+
+/* Scroll behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
+}
+
+:target {
+  scroll-margin-top: 60px;
+}
+
+.restaurant-detail {
+  scroll-margin-top: 60px;
+}
+
+/* Navigation & Header Styles */
+.nav__item {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav__item a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 15px;
+  transition: all 0.3s ease;
+}
+
+.nav__item a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav__item a:hover::after {
+  width: 100%;
+}
+
+.nav__item:hover {
+  transform: translateY(-2px);
+}
+
+.nav__item a:hover {
+  color: var(--primary);
+}
+
+/* Search Styles */
+.header__search {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  position: absolute;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  position: relative;
+}
+
+.search-form input {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  padding: 8px 15px;
+  width: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.search-form.active input {
+  width: 200px;
+  opacity: 1;
+}
+
+.search-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 2;
+}
+
+/* Media Queries */
+@media screen and (max-width: 499px) {
+  .nav {
+    z-index: 10;
+    background-color: var(--bg);
+    width: 70%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-x: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .open {
+    transform: translateX(0);
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .nav__item {
+    width: 10%;
+    text-align: left;
+    padding: 2px;
+  }
+
+  .header__menu {
+    display: block;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .header__menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+  }
+
+  .back-button {
+    display: block;
+    margin-top: auto;
+  }
+
+  .headline {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 455px) {
+  .headline__content {
+    padding: 16px 16px;
+  }
+
+  .headline__title {
+    font-size: 28px;
+  }
+
+  .headline__description {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .header__menu {
+    display: none;
+  }
+
+  .headline {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .headline {
+    padding-top: 3rem;
+  }
+
+  .headline__content {
+    margin: 0 auto;
+    max-width: 650px;
+  }
+
+  .post-item__content {
+    padding: 16px 32px 32px 32px;
+  }
+
+  .post-item__title {
+    font-size: 18px;
+  }
+
+  .post-item__description {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .headline {
+    padding: 60px;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 16px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .nav__list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .headline {
+    padding: 20px;
+    display: block;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .headline__content {
+    padding: 16px 32px;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg);
+    z-index: 1000;
+  }
+
+  main {
+    padding-top: 60px;
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+  }
+
+  .search-form.active input {
+    width: 200px;
+    padding: 8px 15px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .search-icon {
+    cursor: pointer;
+    z-index: 11;
+    position: relative;
+  }
+
+  .search-active .nav__brand,
+  .search-active .nav__list {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav__brand {
+    flex: 1;
+  }
+
+  .header__actions {
+    margin-right: 10px;
+  }
+
+  .search-form.active input {
+    width: 150px;
+    right: 40px;
+    background: var(--bg);
+    border: 1px solid var(--primary);
+    color: white;
+  }
+
+  .search-icon,
+  .header__menu {
+    position: relative;
+    z-index: 11;
+  }
+
+  .posts {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .post-item {
+    max-width: 100%;
+  }
+
+  .post-item__thumbnail {
+    height: 180px;
+  }
+
+  .post-item__content {
+    padding: 1.2rem;
+  }
+
+  .btn-detail {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .restaurant-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+  }
+
+  .restaurant-title {
+    font-size: 1.8rem;
+  }
+
+  .restaurant-rating {
+    font-size: 1.1rem;
+  }
+
+  .restaurant-image {
+    height: 250px;
+  }
+
+  .info-card,
+  .menu-card {
+    padding: 1rem;
+  }
+
+  .review-form {
+    padding: 1.5rem;
+  }
+
+  .restaurant-detail {
+    padding: 55px 1rem 1rem 1rem;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .hero__title {
+    font-size: 28px;
+  }
+
+  .hero__tagline {
+    font-size: 16px;
+  }
+
+  .favorite-container {
+    padding: 1rem;
+  }
+
+  .favorite-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .favorite-empty {
+    padding: 2rem 1rem;
+    margin: 1rem;
+  }
+
+  .favorite-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .posts {
+    grid-template-columns: 1fr;
+    padding: 1rem 0.5rem;
+  }
+
+  .post-item {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header__actions {
+    margin-right: 0;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+
+  .header__search {
+    right: 45px;
+  }
+
+  .header__menu {
+    position: absolute;
+    right: -10px;
+    margin-right: 0;
+  }
+
+  .search-form.active input {
+    width: 120px;
+    right: 10px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .header__actions {
+    margin-right: 0;
+    justify-content: flex-end;
+  }
+
+  .header__search {
+    right: -10px;
+  }
+
+  .header__menu {
+    margin-right: 5px;
+  }
+
+  .search-form.active input {
+    width: 120px;
+    right: 30px;
+  }
+
+  .posts {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .post-item,
+  .restaurant-detail,
+  .info-card,
+  .menu-card,
+  .review-card,
+  .review-form {
+    width: 100%;
+    max-width: calc(100% - 20px);
+    margin: 10px auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .restaurant-info,
+  .menu-list,
+  .review-container,
+  .restaurant-header,
+  .restaurant-content,
+  .menu-section,
+  .review-section {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  .review-form input,
+  .review-form textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .restaurant-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+  }
+
+  .restaurant-title,
+  .restaurant-description,
+  .menu-item,
+  .review-text {
+    width: 100%;
+    word-wrap: break-word;
+    box-sizing: border-box;
+  }
+
+  .menu-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .favorite-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 740px) and (max-width: 900px) {
+  .nav__list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .nav__item {
+    width: auto;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1001px) {
+  .nav {
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none;
+    background-color: transparent;
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 0;
+    gap: 20px;
+    position: relative;
+  }
+
+  .nav__item {
+    width: auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header__menu {
+    display: none;
+  }
+
+  .nav__item a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(231, 88, 36, 0.1);
+    transition: left 0.3s ease;
+    z-index: -1;
+    border-radius: 4px;
+  }
+
+  .nav__item a:hover::before {
+    left: 0;
+  }
+
+  .nav__item.active a {
+    color: var(--primary);
+  }
+
+  .nav__item.active a::after {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .nav {
+    z-index: 10;
+    background-color: var(--bg);
+    width: 70%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-x: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .open {
+    transform: translateX(0);
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+  }
+
+  .nav__item {
+    width: 100%;
+    text-align: left;
+    padding: 12px 20px;
+  }
+
+  .header__menu {
+    display: block;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+  }
+
+  .header__menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+
+  /* Animasi hamburger menu saat aktif */
+  .header__menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .header__menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+}
