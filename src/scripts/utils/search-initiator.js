@@ -6,11 +6,11 @@ const SearchInitiator = {
     let searchTimeout;
 
     // Load semua restoran saat awal
-    this._fetchAllRestaurants().then(restaurants => {
+    this._fetchAllRestaurants().then((restaurants) => {
       this._displaySearchResults(restaurants);
     });
 
-    searchToggle.addEventListener('click', event => {
+    searchToggle.addEventListener('click', (event) => {
       event.preventDefault();
       searchForm.classList.toggle('active');
       if (searchForm.classList.contains('active')) {
@@ -19,13 +19,13 @@ const SearchInitiator = {
     });
 
     // Pencarian realtime
-    searchInput.addEventListener('input', event => {
+    searchInput.addEventListener('input', (event) => {
       clearTimeout(searchTimeout);
       const query = event.target.value.trim();
 
       if (query === '') {
         // Reset pencarian dan tampilkan semua restoran
-        this._fetchAllRestaurants().then(restaurants => {
+        this._fetchAllRestaurants().then((restaurants) => {
           this._displaySearchResults(restaurants);
         });
         return;
@@ -85,7 +85,7 @@ const SearchInitiator = {
       return;
     }
 
-    restaurants.forEach(restaurant => {
+    restaurants.forEach((restaurant) => {
       const restaurantElement = document.createElement('article');
       restaurantElement.classList.add('post-item');
       restaurantElement.innerHTML = `

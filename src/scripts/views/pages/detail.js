@@ -1,7 +1,7 @@
 import { loadRestaurantDetails } from '../../components/restaurantDetail';
 import { killScrollTriggers } from '../../utils/scroll-helper';
 
-const showDetailPage = async id => {
+const showDetailPage = async (id) => {
   try {
     // Scroll ke atas sebelum menampilkan detail
     window.scrollTo(0, 0);

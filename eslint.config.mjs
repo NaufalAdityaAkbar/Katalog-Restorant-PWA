@@ -2,18 +2,28 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import daStyle from 'eslint-config-dicodingacademy';
 
-
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  {languageOptions: { globals: globals.browser }},
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        require: true,
+        __dirname: true,
+        process: true
+      }
+    }
+  },
   pluginJs.configs.recommended,
   daStyle,
-
   {
     rules: {
-      'space-infix-ops': ['error'],
+      'space-infix-ops': 'error',
       'brace-style': ['error', '1tbs'],
       'space-before-blocks': ['error', 'always'],
-    },
-  },
+      'quotes': ['error', 'single'],
+      'spellcheck/spell-checker': 'off'
+    }
+  }
 ];

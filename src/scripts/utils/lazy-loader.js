@@ -6,8 +6,8 @@ const LazyLoader = {
       threshold: 0.1,
     };
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting && entry.target.dataset.src) {
           entry.target.src = entry.target.dataset.src;
           entry.target.classList.add('loaded');
@@ -16,7 +16,7 @@ const LazyLoader = {
       });
     }, options);
 
-    document.querySelectorAll('[data-src]').forEach(element => {
+    document.querySelectorAll('[data-src]').forEach((element) => {
       observer.observe(element);
     });
   },

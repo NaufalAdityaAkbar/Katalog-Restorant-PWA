@@ -11,7 +11,7 @@ const routes = {
     app.showHomePage();
     app.loadRestaurants();
   },
-  '/detail/:id': async id => {
+  '/detail/:id': async (id) => {
     hideAllContainers();
 
     document.querySelector('#restaurantDetailContainer').style.display = 'block';
@@ -51,7 +51,7 @@ const routes = {
 function hideAllContainers() {
   const containers = ['#home', '#Story', '#Restaurant', '#Favorite', '#restaurantDetailContainer'];
 
-  containers.forEach(container => {
+  containers.forEach((container) => {
     const element = document.querySelector(container);
     if (element) {
       element.style.display = 'none';

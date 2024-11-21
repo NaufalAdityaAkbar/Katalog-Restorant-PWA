@@ -39,7 +39,7 @@ const app = {
   initializeEventListeners() {
     // Tambahkan event listener untuk skip to content
     const skipLinkElem = document.querySelector('.skip-to-content');
-    skipLinkElem.addEventListener('click', event => {
+    skipLinkElem.addEventListener('click', (event) => {
       event.preventDefault();
       const mainContent = document.querySelector('.content');
       mainContent.setAttribute('tabindex', '0');
@@ -52,8 +52,8 @@ const app = {
     });
 
     // Event listener untuk navigasi menu
-    document.querySelectorAll('.nav__item a').forEach(link => {
-      link.addEventListener('click', e => {
+    document.querySelectorAll('.nav__item a').forEach((link) => {
+      link.addEventListener('click', (e) => {
         const href = e.target.getAttribute('href');
         if (href === '#/favorite') {
           e.preventDefault();
@@ -76,7 +76,7 @@ const app = {
     });
 
     // Event listener untuk tombol kembali
-    document.querySelector('.back-button').addEventListener('click', e => {
+    document.querySelector('.back-button').addEventListener('click', (e) => {
       e.preventDefault();
       window.location.hash = '#/';
     });
@@ -120,7 +120,7 @@ const app = {
 
       restaurantContainer.innerHTML = '';
 
-      data.restaurants.forEach(restaurant => {
+      data.restaurants.forEach((restaurant) => {
         const restaurantElement = document.createElement('article');
         restaurantElement.classList.add('post-item');
         restaurantElement.innerHTML = `
@@ -152,7 +152,7 @@ const app = {
       });
 
       // Pastikan CSS tetap ada setelah render
-      document.querySelectorAll('.btn-detail').forEach(button => {
+      document.querySelectorAll('.btn-detail').forEach((button) => {
         button.classList.add('btn-detail');
       });
     } catch (error) {
@@ -166,12 +166,12 @@ const app = {
     const hero = document.querySelector('.hero');
     const main = document.querySelector('main');
 
-    menu.addEventListener('click', event => {
+    menu.addEventListener('click', (event) => {
       drawer.classList.toggle('open');
       event.stopPropagation();
     });
 
-    [hero, main].forEach(element => {
+    [hero, main].forEach((element) => {
       element.addEventListener('click', () => {
         drawer.classList.remove('open');
       });
@@ -239,7 +239,7 @@ const app = {
       await Notification.requestPermission();
 
       // Event listener untuk notifikasi saat favorit ditambahkan
-      document.addEventListener('restaurant-favorited', event => {
+      document.addEventListener('restaurant-favorited', (event) => {
         NotificationHelper.sendNotification({
           title: 'Restoran Difavoritkan!',
           options: {
@@ -255,7 +255,7 @@ const app = {
       });
 
       // Event listener untuk notifikasi saat favorit dihapus
-      document.addEventListener('restaurant-unfavorited', event => {
+      document.addEventListener('restaurant-unfavorited', (event) => {
         NotificationHelper.sendNotification({
           title: 'Restoran Dihapus dari Favorit',
           options: {
@@ -291,7 +291,7 @@ function lazyLoadImages() {
   };
 
   const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const img = entry.target;
         img.src = img.dataset.src;
@@ -301,7 +301,7 @@ function lazyLoadImages() {
     });
   }, imageOptions);
 
-  images.forEach(img => imageObserver.observe(img));
+  images.forEach((img) => imageObserver.observe(img));
 }
 
 // Panggil fungsi setelah konten dimuat
@@ -318,9 +318,9 @@ function lazy(importFn) {
     {
       get: (target, prop) => {
         if (!module) {
-          module = importFn().then(m => m.default);
+          module = importFn().then((m) => m.default);
         }
-        return (...args) => module.then(m => m[prop](...args));
+        return (...args) => module.then((m) => m[prop](...args));
       },
     }
   );

@@ -115,14 +115,14 @@ export async function loadRestaurantDetails(id) {
             <div class="menu-card foods">
               <h3><i class="fas fa-utensils"></i> Menu Makanan</h3>
               <ul>
-                ${restaurant.menus.foods.map(food => `<li>${food.name}</li>`).join('')}
+                ${restaurant.menus.foods.map((food) => `<li>${food.name}</li>`).join('')}
               </ul>
             </div>
             
             <div class="menu-card drinks">
               <h3><i class="fas fa-coffee"></i> Menu Minuman</h3>
               <ul>
-                ${restaurant.menus.drinks.map(drink => `<li>${drink.name}</li>`).join('')}
+                ${restaurant.menus.drinks.map((drink) => `<li>${drink.name}</li>`).join('')}
               </ul>
             </div>
           </div>
@@ -146,8 +146,8 @@ export async function loadRestaurantDetails(id) {
 
             <div class="reviews-container">
               ${restaurant.customerReviews
-                .map(
-                  review => `
+    .map(
+      (review) => `
                 <div class="review-card">
                   <div class="review-header">
                     <p class="review-name"><i class="fas fa-user"></i> ${review.name}</p>
@@ -156,8 +156,8 @@ export async function loadRestaurantDetails(id) {
                   <p class="review-text">${review.review}</p>
                 </div>
               `
-                )
-                .join('')}
+    )
+    .join('')}
             </div>
           </div>
         </div>
@@ -198,7 +198,7 @@ export async function loadRestaurantDetails(id) {
     await updateFavoriteButtonState(id);
 
     // Add event listener for review form
-    document.getElementById('reviewForm').addEventListener('submit', async e => {
+    document.getElementById('reviewForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
       const reviewData = {

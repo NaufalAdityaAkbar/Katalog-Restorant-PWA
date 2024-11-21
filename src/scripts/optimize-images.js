@@ -61,7 +61,7 @@ async function optimizeImages() {
   try {
     await ensureDirectoryExists(paths.output);
     const files = await fs.readdir(paths.input);
-    const imageFiles = files.filter(file => /\.(jpg|jpeg|png)$/i.test(file));
+    const imageFiles = files.filter((file) => /\.(jpg|jpeg|png)$/i.test(file));
 
     for (const file of imageFiles) {
       const inputPath = path.join(paths.input, file);

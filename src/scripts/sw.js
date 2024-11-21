@@ -63,17 +63,17 @@ registerRoute(
 );
 
 // Tambahkan handler khusus untuk request detail restaurant
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
   if (event.request.url.includes('restaurant-api.dicoding.dev/detail/')) {
     event.respondWith(
-      caches.match(event.request).then(response => {
+      caches.match(event.request).then((response) => {
         if (response) {
           return response;
         }
         return fetch(event.request)
-          .then(networkResponse => {
+          .then((networkResponse) => {
             const responseToCache = networkResponse.clone();
-            caches.open('restaurant-detail-cache').then(cache => {
+            caches.open('restaurant-detail-cache').then((cache) => {
               cache.put(event.request, responseToCache);
             });
             return networkResponse;
@@ -87,7 +87,7 @@ self.addEventListener('fetch', event => {
 });
 
 // Fallback untuk navigasi
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith(
       (async () => {
@@ -112,7 +112,7 @@ self.addEventListener('fetch', event => {
 });
 
 // Tambahkan event listener untuk WebSocket error
-self.addEventListener('message', event => {
+self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'WEBSOCKET_ERROR') {
     console.log('WebSocket connection failed, using fallback mechanism');
   }

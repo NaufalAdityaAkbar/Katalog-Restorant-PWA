@@ -3,9 +3,9 @@ const WebSocketInitiator = {
     try {
       const webSocket = new WebSocket(url);
 
-      webSocket.onmessage = message => this._onMessageHandler(message);
+      webSocket.onmessage = (message) => this._onMessageHandler(message);
 
-      webSocket.onerror = error => {
+      webSocket.onerror = (error) => {
         console.log('WebSocket error:', error);
       };
 

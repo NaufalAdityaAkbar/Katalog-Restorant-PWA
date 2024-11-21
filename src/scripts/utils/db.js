@@ -3,14 +3,14 @@ import CONFIG from '../global/config';
 export async function openDB() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(CONFIG.DATABASE_NAME, CONFIG.DATABASE_VERSION);
-    request.onupgradeneeded = event => {
+    request.onupgradeneeded = (event) => {
       const db = event.target.result;
       if (!db.objectStoreNames.contains(CONFIG.OBJECT_STORE_NAME)) {
         db.createObjectStore(CONFIG.OBJECT_STORE_NAME, { keyPath: 'id' });
       }
     };
-    request.onsuccess = event => resolve(event.target.result);
-    request.onerror = event => reject(`IndexedDB error: ${event.target.error.message}`);
+    request.onsuccess = (event) => resolve(event.target.result);
+    request.onerror = (event) => reject(`IndexedDB error: ${event.target.error.message}`);
   });
 }
 

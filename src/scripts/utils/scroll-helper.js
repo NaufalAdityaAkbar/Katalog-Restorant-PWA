@@ -16,7 +16,7 @@ export const initScrollTriggers = () => {
   killScrollTriggers();
 
   // Inisialisasi ScrollTrigger baru
-  gsap.utils.toArray('.content').forEach(section => {
+  gsap.utils.toArray('.content').forEach((section) => {
     const trigger = ScrollTrigger.create({
       trigger: section,
       start: 'top 80%',
@@ -34,6 +34,6 @@ export const initScrollTriggers = () => {
 };
 
 export const killScrollTriggers = () => {
-  scrollTriggerInstances.forEach(trigger => trigger.kill());
+  scrollTriggerInstances.forEach((trigger) => trigger.kill());
   scrollTriggerInstances = [];
 };
